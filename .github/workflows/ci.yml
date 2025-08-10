@@ -34,7 +34,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"          
       
-      - name: Pull latest changes (including tags)
+      - name: Pull latest changes 
         run: git pull
 
       - name: Bump version, commit, and tag
@@ -44,6 +44,9 @@ jobs:
           npm version patch -m "ci: bump version to %s [skip ci]"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull latest changes
+        run: git pull
 
       - name: Push version bump commit and tags
         uses: ad-m/github-push-action@v0.6.0

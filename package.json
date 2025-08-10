@@ -1,6 +1,6 @@
 {
   "name": "remark-markdown-extensions",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "A set of remark plugins for extended markdown syntax, including FAQ blocks with Schema.org data and styled asides.",
   "type": "module",
   "main": "index.js",
