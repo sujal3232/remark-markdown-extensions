@@ -16,7 +16,6 @@ export default function faqPlugin(options = {}) {
 
   return (tree, file) => {
     const faqItems = [];
-
     visit(tree, (node) => {
       if (node.type === 'containerDirective' && node.name === 'faq') {
         node.data = node.data || {};
@@ -85,18 +84,18 @@ function createFaqDetails(question, answer) {
   return {
     type: 'element',
     tagName: 'details',
-    properties: { className: ['border', 'border-gray-200', 'rounded-lg', 'p-4'] },
+    properties: { className: ['faq-item', 'mb-6'] },
     children: [
       {
         type: 'element',
         tagName: 'summary',
-        properties: { className: ['cursor-pointer', 'font-semibold', 'text-lg', 'hover:text-blue-500'] },
+        properties: { className: ['cursor-pointer', 'font-semibold', 'text-2xl','lg:text-3xl','faq-q'] },
         children: [{ type: 'text', value: question }]
       },
       {
         type: 'element',
         tagName: 'div',
-        properties: { className: ['mt-2', 'text-gray-700'] },
+        properties: { className: [ 'text-lg', 'lg:text-xl', 'faq-a','p-4'] },
         children: [{ type: 'text', value: answer }]
       }
     ]

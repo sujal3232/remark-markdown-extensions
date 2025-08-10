@@ -5,8 +5,8 @@ These plugins extend the base markdown functionality.
 On astro sites, they must be added to `astro.config.mjs` as follows:
 
 ```javascript
-import asidePlugin from './plugins/aside.js';
-import faqPlugin from './plugins/faq.js';
+import { asidePlugin } from 'remark-markdown-extensions';
+import { faqPlugin } from 'remark-markdown-extensions';
 //etc...
 
 export default {
