@@ -24,6 +24,11 @@ jobs:
       - name: Run Tests
         run: npm test
 
+      - name: Clean working directory
+        run: |
+          git reset --hard
+          git clean -fd
+          
       - name: Bump version, commit, and tag
         id: bump-version
         run: |
