@@ -14,7 +14,11 @@ describe('FAQ Plugin', () => {
   it('extracts FAQ schema from markdown', async () => {
     const file = await remark().use(remarkDirective).use(faqPlugin).process(md);
     expect(file.data.astro.frontmatter.faqSchema).toBeDefined();
+    expect(file.data.astro.frontmatter.faqSchema['@type']).toContain('FAQPage');
+    expect(file.data.astro.frontmatter.faqSchema['@context']).toContain('https://schema.org');
     expect(file.data.astro.frontmatter.faqSchema.mainEntity[0].name).toContain('This is a question');
+    expect(file.data.astro.frontmatter.faqSchema.mainEntity[0]['@type']).toContain('Question');
+    expect(file.data.astro.frontmatter.faqSchema.mainEntity[0].acceptedAnswer['@type']).toContain('Answer');
   });
 
   it('uses default class when no config provided', async () => {

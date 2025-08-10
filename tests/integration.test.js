@@ -47,10 +47,8 @@ describe('Integration: All Markdown Extensions Together', () => {
     });
 
     processor.use(remarkRehype).use(rehypeStringify);
-    
     const file = await processor.process(combinedMarkdown);
     const output = String(file);
-    
     // Check each plugin's output exists
     plugins.forEach(({ plugin, testData }) => {
       const name = plugin.name || 'unknown';
