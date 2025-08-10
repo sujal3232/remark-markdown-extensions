@@ -1,7 +1,18 @@
 {
   "name": "remark-markdown-extensions",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A set of remark plugins for extended markdown syntax, including FAQ blocks with Schema.org data and styled asides.",
+  "contributors":[
+    {
+    "name":"Rick Pfahl <pfahlr@gmail.com>",
+    "url":"https://rickpfahl.com/",
+    "author":true
+    }
+  ],
+  "repository": {
+    "type":"git",
+    "url":"git+https://github.com/pfahlr/remark-markdown-extensions.git"
+  },
   "type": "module",
   "main": "index.js",
   "exports": {
