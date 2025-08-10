@@ -29,11 +29,11 @@ jobs:
           git reset --hard
           git clean -fd
 
-      - name: Set git user for version bump
+      - name: Set git user for version bump!
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"          
-          
+
       - name: Bump version, commit, and tag
         id: bump-version
         run: |
