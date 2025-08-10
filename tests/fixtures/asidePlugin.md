@@ -2,5 +2,5 @@
 
 :::aside
 ## Aside Header
-Custom aside content.
+This is an aside note with extra context.
 :::

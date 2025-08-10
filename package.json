@@ -12,8 +12,20 @@
   "scripts": {
     "test": "vitest run"
   },
-  "keywords": ["remark", "astro", "tailwindcss", "markdown", "faq", "schema.org", "aside", "plugin"],
+  "keywords": [
+    "remark",
+    "astro",
+    "tailwindcss",
+    "markdown",
+    "faq",
+    "schema.org",
+    "aside",
+    "plugin"
+  ],
   "dependencies": {
+    "rehype-stringify": "^10.0.1",
+    "remark-html": "^16.0.1",
+    "remark-rehype": "^11.1.2",
     "unist-util-visit": "^4.1.2"
   },
   "devDependencies": {

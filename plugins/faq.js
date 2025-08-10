@@ -1,7 +1,11 @@
 import { visit } from 'unist-util-visit';
 
 export default function faqPlugin(options = {}) {
-  const { className = 'faq-block border border-gray-200 rounded-lg p-4 my-4 space-y-4' } = options;
+  var { className = 'faq-block border border-gray-200 rounded-lg p-4 my-4 space-y-4' } = options;
+
+  if (!className.includes('faq-block')) {
+    className = 'faq-block '+className;
+  }
 
   return (tree, file) => {
     const faqItems = [];
@@ -9,11 +13,8 @@ export default function faqPlugin(options = {}) {
     visit(tree, (node) => {
       if (node.type === 'containerDirective' && node.name === 'faq') {
         node.data = node.data || {};
-        node.data.hName = 'div';
-        node.data.hProperties = {
-          class: className
-        };
-
+        node.data.hProperties = node.data.hProperties || {};
+        node.data.hProperties.className = className;
         let currentQuestion = null;
         let currentAnswer = '';
 
@@ -49,7 +50,8 @@ export default function faqPlugin(options = {}) {
           }
         }))
       };
-
+      file.data.astro = file.data.astro || {};
+      file.data.astro.frontmatter = file.data.astro.frontmatter || {};
       file.data.astro.frontmatter.faqSchema = schema;
     }
   };

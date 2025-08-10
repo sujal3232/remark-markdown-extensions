@@ -1,11 +1,11 @@
-// tests/integration.test.js
-import { describe, it, expect } from 'vitest';
-import remark from 'remark';
-import remarkDirective from 'remark-directive';
-import html from 'remark-html';
 import fs from 'node:fs';
 import path from 'node:path';
-import { plugins } from '../plugins/index.js';
+import { describe, it, expect } from 'vitest';
+import { remark } from 'remark';
+import remarkDirective from 'remark-directive';
+import remarkRehype from 'remark-rehype';
+import rehypeStringify from 'rehype-stringify';
+import  { plugins }  from '../plugins/index.js';
 
 describe('Integration: All Markdown Extensions Together', () => {
   const fixtureDir = path.join(__dirname, 'fixtures');
@@ -27,15 +27,35 @@ describe('Integration: All Markdown Extensions Together', () => {
     plugins.forEach(({ plugin, options }) => {
       processor.use(plugin, options);
     });
-    processor.use(html);
 
+    processor.use(remarkRehype).use(rehypeStringify);
+    
     const file = await processor.process(combinedMarkdown);
     const output = String(file);
-
+    
     // Check each plugin's output exists
     plugins.forEach(({ plugin }) => {
       const name = plugin.name || 'unknown';
       expect(output).toContain(name.split(/Plugin/i)[0] || name);
     });
   });
+
+  it('runs all plugins together and they replace their content as expected', async () => {
+    const processor = remark().use(remarkDirective);
+    plugins.forEach(({ plugin, options }) => {
+      processor.use(plugin, options);
+    });
+
+    processor.use(remarkRehype).use(rehypeStringify);
+    
+    const file = await processor.process(combinedMarkdown);
+    const output = String(file);
+    
+    // Check each plugin's output exists
+    plugins.forEach(({ plugin, testData }) => {
+      const name = plugin.name || 'unknown';
+      expect(output).toContain(testData.toContain);
+    });
+  });
+
 });
