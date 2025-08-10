@@ -35,7 +35,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"          
       
       - name: Pull latest changes (including tags)
-        run: git pull --tags origin main
+        run: git pull --tags origin master
 
       - name: Bump version, commit, and tag
         id: bump-version
