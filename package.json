@@ -1,0 +1,25 @@
+{
+  "name": "remark-markdown-extensions",
+  "version": "1.0.0",
+  "description": "A set of remark plugins for extended markdown syntax, including FAQ blocks with Schema.org data and styled asides.",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./faq": "./plugins/faq.js",
+    "./aside": "./plugins/aside.js"
+  },
+  "scripts": {
+    "test": "vitest run"
+  },
+  "keywords": ["remark", "astro", "tailwindcss", "markdown", "faq", "schema.org", "aside", "plugin"],
+  "dependencies": {
+    "unist-util-visit": "^4.1.2"
+  },
+  "devDependencies": {
+    "remark": "^15.0.0",
+    "remark-directive": "^2.0.1",
+    "vitest": "^0.34.0"
+  },
+  "license": "MIT"
+}
